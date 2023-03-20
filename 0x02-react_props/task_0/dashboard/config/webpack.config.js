@@ -1,47 +1,64 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
-  mode: "development",
-  devtool: "inline-source-map",
-  entry: "./src/index.js",
+  entry: './src/index.js',
   output: {
-    filename: "bundle.js",
-    path: path.resolve("./dist"),
+    filename: 'bundle.js',
+    path: path.resolve('./dist'),
   },
+  devtool: 'inline-source-map',
   devServer: {
-    hot: true,
-    contentBase: path.resolve("./dist"),
-    compress: true,
-    port: 8564,
+   hot: true,
+   open: true,
   },
-  performance: {
-    maxAssetSize: 1000000,
-    maxEntrypointSize: 1000000,
-  },
+  mode: 'development',
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
+        exclude: /node_modules|bower_components/,
+        use: { 
+            loader: 'babel-loader',
+            options: { 
+                presets: ['@babel/preset-env', '@babel/preset-react']
+            } 
+        }
       },
       {
-        test: /\.css$/i,
+        test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(png|jpg|gif|svg)$/,
+        loader: 'file-loader',
+      },
+      {
+        test: /\.(gif|png|jpe?g|svg)$/,
         use: [
-          "file-loader",
+          'file-loader',
           {
-            loader: "image-webpack-loader",
+            loader: 'image-webpack-loader',
             options: {
-              bypassOnDebug: true, // webpack@1.x
-              disable: true, // webpack@2.x and newer
+              mozjpeg: {
+                progressive: true,
+              },
+              optipng: {
+                enabled: false,
+              },
+              pngquant: {
+                quality: [0.65, 0.90],
+                speed: 4
+              },
+              gifsicle: {
+                interlaced: false,
+              },
+              webp: {
+                quality: 75
+              }
             },
           },
-        ],
+        ]
       },
-    ],
-  },
+    ]
+  }
 };

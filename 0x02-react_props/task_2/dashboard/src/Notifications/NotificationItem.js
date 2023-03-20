@@ -1,17 +1,5 @@
 import React from 'react';
 
-function NotificationItem({ type, html, value }) {
-  return (
-    value ? 
-    <li
-    data-notification-type={type}
-    >{value}</li> 
-    :
-    <li
-    data-notification-type={type}
-    dangerouslySetInnerHTML={{ __html: html }}
-    ></li> 
-  );
-}
+const li = <li type="data-notification-type" value="" dangerouslySetInnerHTML={{__html: html}}></li>
 
-export default NotificationItem;
+

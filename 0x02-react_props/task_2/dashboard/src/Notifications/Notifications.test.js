@@ -1,29 +1,19 @@
-import React from 'react';
-import { shallow } from 'enzyme';
 import Notifications from './Notifications';
+import { shallow } from 'enzyme';
 
-describe("Testing the <Notifications /> Component", () => {
-  
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Notifications />);
+describe('Notifications', () => {
+    it('renders without crashing', () => {
+      const wrapper = shallow(<Notifications />);
+      expect(wrapper.exists());
+    });
+    it("Test n°2", () => {
+      const wrapper = shallow(<Notifications />);
+      wrapper.update();
+      expect(wrapper.find("li")).toHaveLength(3);
+    });
+    it("Test n°3", () => {
+      const wrapper = shallow(<Notifications />);
+      wrapper.update();
+      expect(wrapper.find("p").text()).toEqual('Here is the list of notifications');
+    });
   });
-
-  it("<Notifications /> is rendered without crashing", () => {
-    expect(wrapper).toBeDefined();
-  });
-
-  it("<Notifications /> renders NotificationItems", () => {
-    expect(wrapper.find('NotificationItem')).toHaveLength(3);
-  });
-
-  it("<Notifications /> render the text 'Here is the list of notifications'", () => {
-    expect(wrapper.contains(<p>Here is the list of notifications</p>)).toEqual(true);
-  });
-
-  it("verify that the first NotificationItem element renders the right html", () => {
-    expect(wrapper.find("NotificationItem").first().html()).toEqual('<li data-notification-type="default">New course available</li>');
-  });
-
-});

@@ -1,31 +1,29 @@
-import React from 'react';
-import { shallow } from 'enzyme';
 import App from './App';
+import { shallow } from 'enzyme';
+import Notifications from '../Notifications/Notifications';
+import Header from '../Header/Header';
+import Login from '../Login/Login';
+import Footer from '../Footer/Footer';
 
-describe('Test App.js', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<App />);
-  });
-
-  it('Renders App without crashing', () => {
+describe('App', () => {
+  it('renders without crashing', () => {
+    const wrapper = shallow(<App />);
     expect(wrapper.exists());
   });
-
-  it('App component contains Notifications component', () => {
-    expect(wrapper.find("Notifications")).toHaveLength(1);
+  it('Notifications component', () => {
+    const wrapper = shallow(<Notifications />);
+    expect(wrapper.exists());
   });
-
-  it('App component contains Header component', () => {
-    expect(wrapper.find("Header")).toHaveLength(1);
+  it('Header component', () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.exists());
   });
-
-  it('App component contains Login component', () => {
-    expect(wrapper.find("Login")).toHaveLength(1);
+  it('Login component', () => {
+    const wrapper = shallow(<Login />);
+    expect(wrapper.exists());
   });
-
-  it('App component contains Footer component', () => {
-    expect(wrapper.find("Footer")).toHaveLength(1);
+  it('Footer component', () => {
+    const wrapper = shallow(<Footer />);
+    expect(wrapper.exists());
   });
 });

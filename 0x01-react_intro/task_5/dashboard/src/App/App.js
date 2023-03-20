@@ -1,27 +1,32 @@
+import React from 'react';
+import logo from '../assets/holberton-logo.jpg';
 import './App.css';
-import logo from '../assets/holberton_logo.jpg';
-import { getFooterCopy, getFullYear } from '../utils/utils';
+import { getFullYear, getFooterCopy } from '../utils/utils';
 
-function App() {
-  return (
-    <div className="App">
-      <div className="App-header">
-        <img src={logo} alt="logo" />
-        <h1>School dashboard</h1>
-      </div>
-      <div className="App-body">
-        <p>Login to access the full dashboard</p>
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" name="email" />
-        <label htmlFor="password">Password: </label>
-        <input type="password" id="password" name="password" />
-        <button>OK</button>
-      </div>
-      <div className="App-footer">
-        <p>Copyright {getFullYear()} - {getFooterCopy()}</p>
-      </div>
-    </div>
-  );
+const year = getFullYear();
+const getFooter = getFooterCopy(false);
+
+export default function App() {
+    return (
+        <div>
+            <header className="App-header">
+                <img src={logo} alt="logo"></img>
+                <h1>School dashboard</h1>
+            </header>
+            <div className="linea"></div>
+            <div className="App-body">
+                <p>Login to access the full dashboard</p>
+                <label htmlFor="Email">Email: </label>
+                <input type="email" id="Email" name="Email"/>
+                <label htmlFor="Password"> Password: </label>
+                <input type="password" id="Password" name="Password"/>
+                <button>Ok</button>
+            </div>
+            <div className="linea"></div>
+            <footer className="App-footer">
+                <p>Copyright {year} - {getFooter}</p>
+            </footer>
+        </div>
+    );
 }
-
-export default App;
+  

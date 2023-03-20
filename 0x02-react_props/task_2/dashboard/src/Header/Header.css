@@ -1,19 +1,34 @@
-:root {
-    --holberton-red: #e1484c;
-}
-
 .App-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    border-bottom: 3px solid var(--holberton-red);
-}
-
-.App-header img {
-    width: 150px;
+  color: red;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .App-header h1 {
-    margin: auto auto auto 0;
-    color: var(--holberton-red);
+  align-self: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.9em;
+  font-weight: bold;
+}
+
+.App-header img {
+  width: 200px;
+}
+
+.App-body {
+  height: 550px;
+  padding-top: 50px;
+  padding-left: 40px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.App-footer {
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+}
+
+.linea {
+  background-color: red;
+  height: 5px;
 }

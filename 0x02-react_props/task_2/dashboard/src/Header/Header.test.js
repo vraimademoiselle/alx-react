@@ -1,24 +1,23 @@
-import React from 'react';
 import Header from './Header';
 import { shallow } from 'enzyme';
 
 
-describe('Testing <Header /> Component', () => {
-  let wrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Header />);
+describe('App', () => {
+  it('renders without crashing', () => {
+    const wrapper = shallow(<Header />);
+    expect(wrapper.exists());
   });
-
-  it("Renders with out crashing", () => {
-    expect(wrapper).toBeDefined();
+  it("Test n°2", () => {
+    const wrapper = shallow(<Header />);
+    wrapper.update();
+    expect(wrapper.find("div.App-header")).toHaveLength(0);
   });
-
-  it("Render an h1 tag", () => {
-    expect(wrapper.find('h1')).toBeDefined();
+  it('components render img', () => {
+    const img = render(<Header />);
+    expect(getByText('logo')).toBeInTheDocument();
   });
-
-  it("Render an img tag", () => {
-    expect(wrapper.find('img')).toBeDefined();
+  it('components render h1', () => {
+    const img = render(<Header />);
+    expect(getByText('School dashboard')).toBeInTheDocument(1)
   });
 });
